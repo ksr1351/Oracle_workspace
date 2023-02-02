@@ -128,29 +128,48 @@ commit;
 
 2023/02/01
 
+DROP TABLE members;
+
 CREATE TABLE members(
     memberEmail varchar2(50) ,  --이메일
     memberPass varchar2(30), --비밀번호
     memberName varchar2(30), --이름
-    memberPhone char(13), --전화번호
+    memberPhone char(11), --전화번호
     memberType number(1) default 1, --회원구분 일반회원 1, 관리자 2
     constraint members_email primary key(memberEmail)
     );
     
 
+--테이블 삭제하지 않고 데이터 수정하기
+DELETE FROM members;
+
+ALTER TABLE members
+MODIFY memberPhone char(11);
+
+
+commit;
+
+
+SELECT * FROM members;
+
+select * from board
+order by num desc;
 
 
 
+ALTER TABLE board
+DROP COLUMN writer;
+
+SELECT b.*, m.memberName
+FROM board b, members m
+WHERE b.memberEmail=m.memberEmail
+AND m.memberEmail=(SELECT memberEmail FROM board WHERE num=32)
+AND num=32;
 
 
-
-
-
-
-
-
-
-
+SELECT memberName 
+FROM members
+WHERE memberEmail='ccc@daum.net';
 
 
 
