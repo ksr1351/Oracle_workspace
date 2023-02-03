@@ -173,6 +173,6 @@ WHERE memberEmail='ccc@daum.net';
 
 
 
+SELECT * FROM employees;
 
-
-
+commit;
