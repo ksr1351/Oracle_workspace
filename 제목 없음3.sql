@@ -207,4 +207,22 @@ select * from libmap;
 
 -------------------------2023/02/07--------------
 
-select * from mem;
+select * from mem
+ORDER BY num DESC;
+
+
+DELETE FROM mem
+WHERE num>=100;
+
+
+
+
+
+
+
+
+
+
+
+
+
