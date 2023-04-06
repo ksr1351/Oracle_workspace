@@ -1,3 +1,6 @@
+DROP TABLE board;
+
+
 CREATE TABLE   board(
     num number CONSTRAINT board_num PRIMARY KEY,
     writer varchar2(50),
@@ -14,7 +17,7 @@ CREATE TABLE   board(
 );
 
 
---½ÃÄö½º°¡ ¾ø´Â °æ¿ì
+--ì‹œí€€ìŠ¤ê°€ ì—†ëŠ” ê²½ìš°
 DROP SEQUENCE board_num_seq;
 CREATE SEQUENCE board_num_seq
 START WITH 1
@@ -24,22 +27,11 @@ NOCYCLE;
 
 
 INSERT INTO board 
-VALUES(board_num_seq.nextval, 'È«±æµ¿','Á¦¸ñ1',sysdate,0,board_num_seq.nextval,
-0,0,'³»¿ë Å×½ºÆ®.......','127.0.0.1','sample.txt','young@aaaa.com');
+VALUES(board_num_seq.nextval, 'í™ê¸¸ë™','ì œëª©1',sysdate,0,board_num_seq.nextval,
+0,0,'ë‚´ìš© í…ŒìŠ¤íŠ¸.......','127.0.0.1','sample.txt','young@aaaa.com');
 
 
 
 commit;
 
 select * from board;
------------------------------------------------------------------------
-
-DROP TABLE reply;
-
-CREATE table reply(
-    rnum number,
-    bnum number CONSTRAINT reply_bnum_const references board(num),
-    message varchar2(1000),
-    regdate date,
-    replyEmail varchar2(50)
-);
